@@ -1,0 +1,17 @@
+rgarci@rgarci:~$ cd UV-RGarci/
+rgarci@rgarci:~/UV-RGarci$ 
+rgarci@rgarci:~/UV-RGarci$ uv init PROJECTE
+Initialized project `projecte` at `/home/rgarci/UV-RGarci/PROJECTE`
+rgarci@rgarci:~/UV-RGarci$ cd PROJECTE/
+rgarci@rgarci:~/UV-RGarci/PROJECTE$ uv add django
+Using CPython 3.12.3 interpreter at: /usr/bin/python3.12
+Creating virtual environment at: .venv
+Resolved 5 packages in 194ms
+Prepared 3 packages in 267ms
+Installed 3 packages in 46ms
+ + asgiref==3.10.0
+ + django==5.2.8
+ + sqlparse==0.5.3
+rgarci@rgarci:~/UV-RGarci/PROJECTE$ uv run django-admin startproject config .
+EN EL TERMINAL DE VSC
+rgarci@rgarci:~/UV-RGarci/PROJECTE$ uv run python manage.py runserver
