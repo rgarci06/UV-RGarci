@@ -1,0 +1,21 @@
+crear requeriments:
+    pip freeze > requirements.txt
+
+instal·lar requeriments: (r de read)
+    pip install -r requirements.txt 
+
+crear carpeta virtual: -m(execució modular com si fos un programa)
+	python -m venv .venv
+
+activar/desactivar venv:
+    venv\Scripts\activate
+    deactivate
+
+iniciar projecte:
+    Django-admin startproject nom_projecte . (així no creem dues carpetes)
+
+córrer servidor:
+    python manage.py runserver
+
+crear app, posar-lo a settings.py del projecte:
+    python manage.py startapp nomapp
