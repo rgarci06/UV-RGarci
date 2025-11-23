@@ -15,6 +15,13 @@ urlpatterns=[
 #'' indica arrel, el primer argument diu quin camí després del prefix de l’app activarà aquesta vista
   path('', views.home, name='home'),
   path('1', views.uno, name='uno'),
+  path('2', views.dos, name='dos'),
+  path('3', views.tres, name='tres'),
+  path('4', views.quatre, name='quatre'),
+  path('5', views.cinc, name='cinc'),
+  path('6', views.sis, name='sis'),
+  path('7', views.set, name='set'),
+  
 
 
 ]

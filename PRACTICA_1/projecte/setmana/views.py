@@ -19,6 +19,24 @@ def home(request):
 def uno(request):
     return HttpResponse("<h1>Dilluns</h1>")
 
+def dos(request):
+    return HttpResponse("<h1>Dimarts</h1>")
+
+def tres(request):
+    return HttpResponse("<h1>Dimecres</h1>")
+
+def quatre(request):
+    return HttpResponse("<h1>Dijous</h1>")
+
+def cinc(request):
+    return HttpResponse("<h1>Divendres</h1>")
+
+def sis(request):
+    return HttpResponse("<h1>Dissabte</h1>")
+
+def set(request):
+    return HttpResponse("<h1>Diumenge</h1>")
+
 # ? request amb paràmetre url (dinamisme) i redirect -----------------------------------------------
 
 def num(request, num:str):
