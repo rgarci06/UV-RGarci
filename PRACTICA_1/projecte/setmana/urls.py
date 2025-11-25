@@ -22,6 +22,4 @@ urlpatterns=[
   path('6', views.sis, name='sis'),
   path('7', views.set, name='set'),
   
-
-
 ]
