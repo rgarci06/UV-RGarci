@@ -11,46 +11,46 @@ from django.shortcuts import redirect
 
 # definim una funció amb paràmetre request->petició al servidor
 def home(request):
-    
-    # resposta servidor
-    return HttpResponse ("<h1>Aquesta és el Home de la meva Web!</h1>")
+    html = """<h1>Díes de la Setmana</h1>
+    <h3>Per veure el dia de la semana posa un número del 1 al 7 al URL /número_del_dia</h3>
+    <h4>ATENCIÓ: si poses un numero que sigui el 0 o menor et redirigirà a aquesta pàgina</h4>"""
+    return HttpResponse(html)
 
-
-def uno(request):
-    return HttpResponse("<h1>Dilluns</h1>")
-
-def dos(request):
-    return HttpResponse("<h1>Dimarts</h1>")
-
-def tres(request):
-    return HttpResponse("<h1>Dimecres</h1>")
-
-def quatre(request):
-    return HttpResponse("<h1>Dijous</h1>")
-
-def cinc(request):
-    return HttpResponse("<h1>Divendres</h1>")
-
-def sis(request):
-    return HttpResponse("<h1>Dissabte</h1>")
-
-def set(request):
-    return HttpResponse("<h1>Diumenge</h1>")
-
-# ? request amb paràmetre url (dinamisme) i redirect -----------------------------------------------
-
-def num(request, num:str):
+def num(request, num:int):
     """Django no accepta paràmetres a les url's negatius, els fem a Strings
     i realitzem càsting per fer validacions (si no és numèric)
     """
     try:
         num=int(num)
     except ValueError:       
-        # si volem redireccionar a una url utilitzem redirect(name de l'url, id=paràmetre a l'url) 
         return redirect("home")
     
-    if num<0 or num>9:
-        return HttpResponseNotFound("<h1>Paràmetre que no està dins del rang</h1>")
+    if num > 7:
+        return HttpResponseNotFound("<h1>Valor númeric no permès</h1>")
+    
+    if num >=1 and num <=7:
+        dies = {
+            1: "Dilluns",
+            2: "Dimarts",
+            3: "Dimecres",
+            4: "Dijous",
+            5: "Divendres",
+            6: "Dissabte",
+            7: "Diumenge"
+        }
+        img = {
+            1: "dilluns.jpg",
+            2: "dimarts.jpg",
+            3: "dimecres.jpg",
+            4: "dijous.jpg",
+            5: "divendres.jpg",
+            6: "dissabte.jpg",
+            7: "diumenge.jpg"
+        }
+        return HttpResponse(f"<h1>{dies[num]}</h1><img src='../media/{img[num]}' alt='Imatge {dies[num]}' size='400' height='400'>")
+
+    if num <= 0:
+        return redirect("home")
     
     return HttpResponse(f"<h1>{num}</h1>")
  
