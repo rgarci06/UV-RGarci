@@ -24,10 +24,7 @@ def num(request, num:int):
         num=int(num)
     except ValueError:       
         return redirect("home")
-    
-    if num > 7:
-        return HttpResponseNotFound("<h1>Valor númeric no permès</h1>")
-    
+        
     if num >=1 and num <=7:
         dies = {
             1: "Dilluns",
@@ -48,6 +45,10 @@ def num(request, num:int):
             7: "diumenge.jpg"
         }
         return HttpResponse(f"<h1>{dies[num]}</h1><img src='../media/{img[num]}' alt='Imatge {dies[num]}' size='400' height='400'>")
+
+    if num > 7:
+        html = """<h1>Valor numèric no permès</h1>"""
+        return HttpResponseNotFound(html)
 
     if num <= 0:
         return redirect("home")
