@@ -21,9 +21,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('setmana/', include('setmana.urls')),
-
+    path('setmana/', include('setmana.urls')), # Aqui dic que les URLs de l'app setmana estan a setmana/urls.py
 ]
 
-if settings.DEBUG:
+if settings.DEBUG: # Amb aixo serveix per poder veure les imatges
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
