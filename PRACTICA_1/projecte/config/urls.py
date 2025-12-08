@@ -22,6 +22,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('setmana/', include('setmana.urls')), # Aqui dic que les URLs de l'app setmana estan a setmana/urls.py
+    path('personatges/', include('personatges.urls')), # Aqui dic que les URLs de l'app personatges estan a personatges/urls.py
 ]
 
 if settings.DEBUG: # Amb aixo serveix per poder veure les imatges

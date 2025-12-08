@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Personatges preferits (Dragon Ball)</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #222;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 1rem;
+        }
+
+        .personatges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .card {
+            background-color: #fff;
+            border-radius: 6px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+            padding: 0.5rem;
+            width: 180px;
+            text-align: center;
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 4px;
+        }
+
+        .card h2 {
+            font-size: 1.1rem;
+            margin: 0.5rem 0;
+        }
+
+        .card a {
+            text-decoration: none;
+            color: #0077cc;
+        }
+
+        .instruccions,
+        .personatge,
+        .error {
+            margin-top: 1.5rem;
+            text-align: center;
+        }
+
+        .personatge img,
+        .error img {
+            max-width: 300px;
+        }
+
+        a {
+            color: #0077cc;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Personatges preferits</h1>
+</header>
+
+<main>
+
+{% if mode == "home" %}
+    <section class="personatges">
+        {% for personatge in personatges %}
+        <div class="card">
+            <img src="{{ personatge.img }}" alt="Imatge de {{ personatge.nom }}">
+            <h2>{{ personatge.nom }}</h2>
+            <p><a href="/personatges/{{ personatge.opcio }}/">Més informació</a></p>
+        </div>
+        {% endfor %}
+    </section>
+
+{% elif mode == "informacio" %}
+    <section class="personatge">
+        <img src="{{ personatge.img }}" alt="Imatge de {{ personatge.nom }}">
+        <h2>{{ personatge.nom }}</h2>
+        <p>{{ personatge.frase }}</p>
+        <p><a href="/personatges/home">Tornar a la pàgina principal</a></p>
+    </section>
+
+{% elif mode == "error" %}
+    <section class="error">
+        <h2>Error</h2>
+        <img src="{{ meme_url }}" alt="Meme d'error">
+        <p>{{ missatge_error }}</p>
+        <p><a href="/personatges/home">Tornar a la pàgina principal</a></p>
+    </section>
+{% endif %}
+
+</main>
+
+</body>
+</html>

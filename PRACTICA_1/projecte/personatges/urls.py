@@ -6,5 +6,5 @@ from . import views
 
 urlpatterns=[ # Aquí defineixo les rutes de les URLs
   path('', views.home, name='home'),
-  path('<str:num>', views.num, name='num'), 
-  ]
+  path("<str:opcio>/", views.personatge, name="personatge"),  
+]
