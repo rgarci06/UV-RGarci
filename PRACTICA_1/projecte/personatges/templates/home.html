@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Personatges Dragon Ball</title>
 
+    <!-- Estils bàsics de la pàgina -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,6 +13,7 @@
             background-color: #f4f4f4;
         }
 
+        <!-- Capçalera fosca amb el títol -->
         header {
             background-color: #222;
             color: #fff;
@@ -19,12 +21,14 @@
             text-align: center;
         }
 
+        <!-- Contenidor principal centrat -->
         main {
             max-width: 1000px;
             margin: 0 auto;
             padding: 1rem;
         }
 
+        <!-- Llista de targetes dels personatges -->
         .personatges {
             display: flex;
             flex-wrap: wrap;
@@ -32,6 +36,7 @@
             justify-content: center;
         }
 
+        <!-- Disseny d'una targeta de personatge -->
         .card {
             background-color: #fff;
             border-radius: 6px;
@@ -41,21 +46,25 @@
             text-align: center;
         }
 
+        <!-- Imatge dins de la targeta -->
         .card img {
             max-width: 100%;
             border-radius: 4px;
         }
 
+        <!-- Nom del personatge a la targeta -->
         .card h2 {
             font-size: 1.1rem;
             margin: 0.5rem 0;
         }
 
+        <!-- Enllaç de més info a la targeta -->
         .card a {
             text-decoration: none;
             color: #0077cc;
         }
 
+        <!-- Seccions per info, instruccions o error -->
         .instruccions,
         .personatge,
         .error {
@@ -63,11 +72,13 @@
             text-align: center;
         }
 
+        <!-- Imatge gran de personatge o meme -->
         .personatge img,
         .error img {
             max-width: 300px;
         }
 
+        <!-- Estil general dels enllaços -->
         a {
             color: #0077cc;
         }
@@ -75,36 +86,52 @@
 </head>
 <body>
 
+<!-- Capçalera de la web -->
 <header>
     <h1>Personatges Dragon Ball</h1>
 </header>
 
+<!-- Contingut principal -->
 <main>
 
+<!-- Si estem a la pàgina principal, mostrem totes les targetes -->
 {% if mode == "home" %}
     <section class="personatges">
+        <!-- Bucle que recorre tots els personatges -->
         {% for personatge in personatges %}
         <div class="card">
+            <!-- Imatge del personatge -->
             <img src="{{ personatge.img }}" alt="Imatge de {{ personatge.nom }}">
+            <!-- Nom del personatge -->
             <h2>{{ personatge.nom }}</h2>
+            <!-- Enllaç per veure més informació del personatge -->
             <p><a href="/personatges/{{ personatge.opcio }}/">Més informació</a></p>
         </div>
         {% endfor %}
     </section>
 
+<!-- Si el mode és informacio, ensenya un personatge concret -->
 {% elif mode == "informacio" %}
     <section class="personatge">
+        <!-- Imatge del personatge -->
         <img src="{{ personatge.img }}" alt="Imatge de {{ personatge.nom }}">
+        <!-- Nom del personatge -->
         <h2>{{ personatge.nom }}</h2>
+        <!-- Frase típica o descripció -->
         <p>{{ personatge.frase }}</p>
+        <!-- Enllaç per tornar a l'inici -->
         <p><a href="/personatges/home">Tornar a la pàgina principal</a></p>
     </section>
 
+<!-- Si hi ha error, mostrem un meme i el missatge -->
 {% elif mode == "error" %}
     <section class="error">
         <h2>Error</h2>
+        <!-- Imatge del meme d'error -->
         <img src="{{ meme_url }}" alt="Meme d'error">
+        <!-- Missatge d'error que passem des del backend -->
         <p>{{ missatge_error }}</p>
+        <!-- Enllaç per tornar a l'inici -->
         <p><a href="/personatges/home">Tornar a la pàgina principal</a></p>
     </section>
 {% endif %}
