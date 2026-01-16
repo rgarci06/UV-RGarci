@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+# Dades dels personatges de Dragon Ball
 personatges = {
     "Goku": {
         "nom": "Son Goku",
@@ -35,13 +36,13 @@ personatges = {
 
 
 from django.shortcuts import render
-
+# Pagina principal que mostra totes les targetes dels personatges
 def home(request):
     return render(request, "home.html", {
         "mode": "home",
         "personatges": personatges.values(),
     })
-
+# Vista per mostrar la informació d'un personatge concret
 def personatge(request, opcio):
     if opcio == "home":
         return home(request)
