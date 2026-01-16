@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Personatges Dragon Ball</title>
 
-    <!-- Estils bàsics de la pàgina -->
+    <!-- Estils de la pàgina -->
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -94,7 +94,7 @@
 <!-- Contingut principal -->
 <main>
 
-<!-- Si estem a la pàgina principal, mostrem totes les targetes -->
+<!-- Tarjetes pagina principal -->
 {% if mode == "home" %}
     <section class="personatges">
         <!-- Bucle que recorre tots els personatges -->
@@ -110,7 +110,7 @@
         {% endfor %}
     </section>
 
-<!-- Si el mode és informacio, ensenya un personatge concret -->
+<!-- Informacio personatges -->
 {% elif mode == "informacio" %}
     <section class="personatge">
         <!-- Imatge del personatge -->
@@ -123,7 +123,7 @@
         <p><a href="/personatges/home">Tornar a la pàgina principal</a></p>
     </section>
 
-<!-- Si hi ha error, mostrem un meme i el missatge -->
+<!-- Meme amb el missatge de error -->
 {% elif mode == "error" %}
     <section class="error">
         <h2>Error</h2>
